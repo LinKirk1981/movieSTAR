@@ -1,0 +1,100 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<jsp:include page="../administrator/cssback.jsp"></jsp:include>
+</head>
+<body class="hold-transition sidebar-mini">
+	<jsp:include page="../administrator/topback.jsp"></jsp:include>
+	
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>會員管理</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item">首頁</li>
+              <li class="breadcrumb-item active"><a style="color: blue">所有會員</a></li>
+              <li class="breadcrumb-item active"><a style="color: red">自行填加，如果用ajax不跳轉畫面請寫在function裡面不要放入迴圈</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Main content -->
+    <section class="content">
+    
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">會員管理</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+       <div class="card-body p-0">
+	<table class="table table-striped projects" id='getAllMember'>
+
+
+	</table>
+	<script>
+	      	window.onload = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET","<c:url value='/members' />",true);
+				xhr.send();
+				xhr.onreadystatechange = function(){
+					console.log(xhr.responseText);
+					if(xhr.readyState == 4 && xhr.status == 200){
+						var members = JSON.parse(xhr.responseText);
+						console.log(members+"aaaaaaaaaaaa");
+						var content = " <thead><tr>"
+				                  +  "<th style='width: 3%'>ID</th>"
+				                  +  "<th style='width: 7%'>姓名</th>"
+				                  +  "<th style='width: 10%'>帳號</th>"
+				                  +  "<th style='width: 40%'>密碼</th>"
+				                  +  "<th style='width: 5%'>手機</th>"
+				                  +  "<th style='width: 5%'>狀態</th>"
+				                  +  "<th style='width: 6%'>身分</th>"				                  
+				                  + "</tr>"
+	            				  +"</thead>"
+	            				  
+	            				for(i = 0; i<members.length; i++) { 
+		            				var member = members[i]
+		            				tmp = "<c:url value='/deletemembers/' />";
+		            				content += " <tbody><tr>"
+		            					  +    "<td>"+ members[i].memPk +"</td>"
+			    		                  +    "<td>"+ members[i].name +"</td>"
+			    		                  +    "<td>"+ members[i].account + "</td>"
+			    		                  +    "<td>"+ members[i].passWord + "</td>"
+			    		                  +    "<td>"+ members[i].cell + "</td>"
+			    						  +	   "<td>"+ members[i].enabled + "</td>"
+			    		                  +    "<td>"+ members[i].roles + "</td>"
+			    						  +	   "<td>"
+			    		                  +    "<a class='btn btn-primary btn-sm' href='#'><i class='fas fa-folder'></i>View</a>"
+			    		                  +    "<a class='btn btn-info btn-sm' href='#'><i class='fas fa-pencil-alt'></i>Edit</a>"
+			    		                  +    "<a class='btn btn-danger btn-sm' href='"+tmp+members[i].memPk+"' /><i class='fas fa-trash'></i>Delete</a>"
+			    		                  +    "</td>"
+			    		                  +    "</tr>"
+			    		              	  +	   "</tbody>"
+			    		  				document.getElementById("getAllMember").innerHTML = content;
+	            				} 
+	            			}
+	            		}        		
+	      	}
+      	
+          </script>
+	<jsp:include page="../administrator/footerback.jsp"></jsp:include>
+</body>
+</html>

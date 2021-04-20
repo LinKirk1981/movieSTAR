@@ -1,0 +1,1 @@
+		var t1 = window.setInterval("saveMsg()",1500);

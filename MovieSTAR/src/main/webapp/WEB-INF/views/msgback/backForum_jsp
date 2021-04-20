@@ -1,0 +1,122 @@
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page session="false"%>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+<jsp:include page="../administrator/cssback.jsp"></jsp:include>
+<script>
+	$(document).ready(function() {
+		$('#AllForum').DataTable({
+		});
+	});
+</script>
+
+</head>
+<!-- <body class="hold-transition sidebar-mini"> -->
+<div id="page-wrapper">
+<jsp:include page="../administrator/topback.jsp"></jsp:include> 
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>文章管理</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active"><a style="color: blue">所有文章</a></li>
+               <li class="breadcrumb-item active"><a href="<c:url value="/users"/>">返回</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+</section>
+<div id="page-wrapper">
+	<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+				
+<div class="panel-body">
+<div id="AllForum1"></div>	
+<table class="table table-striped table-bordered table-hover" width="100%" id="AllForum">
+<thead>
+	<tr>
+		<th>123</th>
+		<th>123</th>
+		<th>123</th>
+		<th>123</th>
+	</tr>
+</thead>
+</table>
+
+
+
+</div>
+<script type="text/javascript">
+// 				window.onload = function(){
+// 				var xhr = new XMLHttpRequest();
+// 					xhr.open("GET","<c:url value='/queryAllForum.controller' />",true);
+// 					xhr.send();
+// 					xhr.onreadystatechange = function(){
+// 						if(xhr.readyState == 4 && xhr.status == 200){
+// 							var forums = JSON.parse(xhr.responseText);
+// 							var	backfa =  "<table class='table table-striped table-bordered table-hover' width='100%' id='AllForum'><thead><tr>"
+// 					                   +  "<th style='width: 1%'>ID</th>"
+// 					                   +  "<th style='width: 5%'>會員</th>"
+// 					                   +  "<th style='width: 5%'>文章</th>"
+// 					                   +  "<th style='width: 25%'>內容</th>"
+// 					                   +  "<th style='width: 5%'>刪除</th>"
+// 					                   +  "<th style='width: 5%'>電影</th>"
+// 					                   +  "<th style='width: 10%'>檢舉</th>"
+// 					                   +  "<th style='width: 15%'>時間</th>"
+// 					                   +  "<th style='width: 15%'>回覆次數</th>"
+// 					                   +  "<th style='width: 15%'>標籤</th>"
+// 					                   +  "<th style='width: 15%'>分類</th>"
+// 					                   +  "</tr>"
+// 		            				   +  "</thead>"
+// 							for(i = 0; i<forums.length; i++){
+// 								var forum = forums[i]
+// 								  backfa  +=   " <tbody><tr>"
+// 			    		                  +    "<td>" + forum.fid +"</td>"
+// 			    		                  +    "<td>" + forum.account + "</td>"
+// 			    		                  +    "<td>" + forum.article + "</td>"
+// 			    		                  +    "<td class='project_progress'>" + forum.content + "</td>"
+// 			    						  +	   "<td>" + forum.fdel + "</td>"
+// 			    		                  +    "<td>" + forum.fmovie + "</td>"
+// 			    		                  +    "<td>" + forum.freport + "</td>"
+// 			    		                  +    "<td>" + forum.ftime + "</td>"
+// 			    		                  +    "<td>" + forum.prestige + "</td>"
+// 			    		                  +    "<td>" + forum.tag + "</td>"
+// 			    		                  +    "<td>" + forum.theme + "</td>"			    		                  
+// // 			    		                  +		"<td>"
+// // 			    		                  +       "<a class='btn btn-danger btn-sm' href='"+ deleteFa + list.id +"'><i class='fas fa-trash'></i>刪除</a>"
+// // 			    		                  +      "<a class='btn btn-info btn-sm' href='<c:url value='/selectdelete.controller' />'>查看已被刪除的留言</a>"
+// // 			    		                  +     "</td>"
+// 			    		                  + 	"</tr>"
+// 			    		              	  +		"</tbody>"
+								
+// 								}	
+// 		            				   backfa  += "</table>"
+// 							document.getElementById("AllForum1").innerHTML = backfa;
+// 							}
+// 						}
+// 					}
+</script>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<jsp:include page="../administrator/footerback.jsp"></jsp:include>
+<!-- </body> -->
+</html>
